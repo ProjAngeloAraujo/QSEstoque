@@ -1,0 +1,10 @@
+Clonar o repositorio;
+Baixar o py 3.12.10;
+Ativar a venv:
+    py -3.12 -m venv venv;
+    venv\Scripts\activate (bash);
+Baixar as bibliotecas:
+    pip install django psycopg[binary];
+Criar o projeto:
+    django-admin startproject QSEstoque . ;
+    python manage.py startapp APPEstoque (criar o APP);
