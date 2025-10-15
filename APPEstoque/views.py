@@ -38,3 +38,23 @@ def index(request):
 
 def dashboard(request):
     return render(request, 'APPEstoque/dashboard.html')
+
+def password(request):
+    if request.method == "POST":
+        fullname = request.POST.get('fullname')
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        confirm_password = request.POST.get('confirm_password')
+
+        if password != confirm_password:
+            return render(request, 'APPEstoque/password.html', {'error': 'Senhas não conferem!'})
+
+        try:
+            user = Usuario.objects.get(fullname=fullname, email=email)
+            user.set_password(password)  # Define a nova senha de forma segura
+            user.save()
+            return redirect('index')  # Redireciona para login ou outra página
+        except Usuario.DoesNotExist:
+            return render(request, 'APPEstoque/password.html', {'error': 'Usuário não encontrado!'})
+
+    return render(request, 'APPEstoque/password.html')

@@ -36,14 +36,10 @@ class Usuario(AbstractBaseUser, PermissionsMixin):  # <- muda aqui
     REQUIRED_FIELDS = ['fullname']
 
     def save(self, *args, **kwargs):
-        # Criptografa a senha se ela ainda não estiver criptografada
         if self.pk is None:  # novo usuário
             self.set_password(self.password)
-        else:
-            old = Usuario.objects.filter(pk=self.pk).first()
-            if old and old.password != self.password:
-                self.set_password(self.password)
         super().save(*args, **kwargs)
+
 
     def __str__(self):
         return self.fullname
