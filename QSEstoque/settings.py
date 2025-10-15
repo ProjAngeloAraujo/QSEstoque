@@ -30,6 +30,8 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+AUTH_USER_MODEL = 'APPEstoque.Usuario'
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -37,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'APPEstoque',
+    'APPEstoque.apps.AppestoqueConfig'
 ]
 
 MIDDLEWARE = [
@@ -75,8 +77,12 @@ WSGI_APPLICATION = 'QSEstoque.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'qsestoque_db',
+        'USER': 'angelousuario',
+        'PASSWORD': 'angelolegal',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 

@@ -11,3 +11,13 @@ Criar o projeto:
     python manage.py startapp APPEstoque (criar o APP);
     Criar a pasta de templates, static e urls.py do APP;
     Ambiente Virtual;
+BD:
+    baixar postgresl 15.14 e configurar;
+    Depois de instalar o PostgreSQL, copie o caminho dele (**GERALMENTE** C:\Program Files\PostgreSQL\15\bin);
+    psql -U postgres, senha: root;
+    CREATE DATABASE qsestoque_db;  
+    CREATE USER angelousuario WITH PASSWORD 'angelolegal';
+    ALTER USER angelousuario WITH SUPERUSER;
+    \l (teste);
+    configurar o sttings.py
+    heidisql para visualizar;
