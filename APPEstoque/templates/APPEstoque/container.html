@@ -1,0 +1,472 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Container - Controle de Estoque</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'APPEstoque/CSS/container.css' %}">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="header-left">
+                <a href="dashboard.html" class="btn-back">← Voltar</a>
+                <h1>📦 Container A1</h1>
+            </div>
+            <div class="header-actions">
+                <div class="user-info">
+                    <div class="user-avatar">A</div>
+                    <span>Admin</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="main-container">
+        <!-- Container Info Card -->
+        <div class="container-info-card">
+            <div class="container-info-header">
+                <div class="container-info-title">
+                    <h2>Container A1</h2>
+                    <span class="container-badge">#CNT-001</span>
+                </div>
+                <span class="container-status active">Ativo</span>
+            </div>
+            <div class="container-stats">
+                <div class="stat-item">
+                    <div class="stat-value">3</div>
+                    <div class="stat-label">Tipos de Produtos</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">105</div>
+                    <div class="stat-label">Total de Unidades</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">5</div>
+                    <div class="stat-label">Pedidos Ativos</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">85%</div>
+                    <div class="stat-label">Capacidade</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Products Section -->
+        <div class="section-header">
+            <h2>Produtos no Container</h2>
+            <button class="btn-add" onclick="openAddProductModal()">+ Adicionar Produto</button>
+        </div>
+
+        <div class="products-section">
+            <table class="products-table" id="productsTable">
+                <thead>
+                    <tr>
+                        <th>Nome do Produto</th>
+                        <th>Gramagem</th>
+                        <th>Status</th>
+                        <th>Quantidade</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-product-id="1">
+                        <td class="product-name-cell">Frango Empanado</td>
+                        <td>1 KG</td>
+                        <td>Frito e congelado</td>
+                        <td>
+                            <div class="quantity-control">
+                                <button class="btn-quantity" onclick="decreaseQuantity(1)">-</button>
+                                <span class="quantity-value" id="quantity-1">25</span>
+                                <button class="btn-quantity" onclick="increaseQuantity(1)">+</button>
+                            </div>
+                        </td>
+                        <td>
+                            <button class="btn-delete" onclick="deleteProduct(1)">Excluir</button>
+                        </td>
+                    </tr>
+                    <tr data-product-id="2">
+                        <td class="product-name-cell">Batata Frita</td>
+                        <td>2.5 KG</td>
+                        <td>Cru e congelando</td>
+                        <td>
+                            <div class="quantity-control">
+                                <button class="btn-quantity" onclick="decreaseQuantity(2)">-</button>
+                                <span class="quantity-value" id="quantity-2">50</span>
+                                <button class="btn-quantity" onclick="increaseQuantity(2)">+</button>
+                            </div>
+                        </td>
+                        <td>
+                            <button class="btn-delete" onclick="deleteProduct(2)">Excluir</button>
+                        </td>
+                    </tr>
+                    <tr data-product-id="3">
+                        <td class="product-name-cell">Nuggets</td>
+                        <td>800 GR</td>
+                        <td>Frito e congelado</td>
+                        <td>
+                            <div class="quantity-control">
+                                <button class="btn-quantity" onclick="decreaseQuantity(3)">-</button>
+                                <span class="quantity-value" id="quantity-3">30</span>
+                                <button class="btn-quantity" onclick="increaseQuantity(3)">+</button>
+                            </div>
+                        </td>
+                        <td>
+                            <button class="btn-delete" onclick="deleteProduct(3)">Excluir</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Orders Section -->
+        <div class="section-header">
+            <h2>Pedidos do Container</h2>
+            <button class="btn-add" onclick="openAddOrderModal()">+ Novo Pedido</button>
+        </div>
+
+        <div class="orders-section">
+            <table class="orders-table" id="ordersTable">
+                <thead>
+                    <tr>
+                        <th>Número do Pedido</th>
+                        <th>Número do Cliente</th>
+                        <th>Nome do Cliente</th>
+                        <th>Região</th>
+                        <th>Falta</th>
+                        <th>Status</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-order-id="1">
+                        <td>#PED-1024</td>
+                        <td>#CLI-501</td>
+                        <td>João Silva</td>
+                        <td>São Paulo - SP</td>
+                        <td><span class="order-status completed">Não</span></td>
+                        <td>
+                            <span class="order-status entregue" id="status-display-1">Entregue</span>
+                        </td>
+                        <td>
+                            <button class="btn-edit-status" onclick="editOrderStatus(1)">Editar</button>
+                        </td>
+                    </tr>
+                    <tr data-order-id="2">
+                        <td>#PED-1021</td>
+                        <td>#CLI-502</td>
+                        <td>Maria Santos</td>
+                        <td>Rio de Janeiro - RJ</td>
+                        <td><span class="order-status completed">Não</span></td>
+                        <td>
+                            <span class="order-status separado" id="status-display-2">Separado</span>
+                        </td>
+                        <td>
+                            <button class="btn-edit-status" onclick="editOrderStatus(2)">Editar</button>
+                        </td>
+                    </tr>
+                    <tr data-order-id="3">
+                        <td>#PED-1018</td>
+                        <td>#CLI-503</td>
+                        <td>Pedro Costa</td>
+                        <td>Belo Horizonte - MG</td>
+                        <td><span class="order-status pending">Sim</span></td>
+                        <td>
+                            <span class="order-status separar" id="status-display-3">Separar</span>
+                        </td>
+                        <td>
+                            <button class="btn-edit-status" onclick="editOrderStatus(3)">Editar</button>
+                        </td>
+                    </tr>
+                    <tr data-order-id="4">
+                        <td>#PED-1015</td>
+                        <td>#CLI-504</td>
+                        <td>Ana Oliveira</td>
+                        <td>Curitiba - PR</td>
+                        <td><span class="order-status completed">Não</span></td>
+                        <td>
+                            <span class="order-status entregue" id="status-display-4">Entregue</span>
+                        </td>
+                        <td>
+                            <button class="btn-edit-status" onclick="editOrderStatus(4)">Editar</button>
+                        </td>
+                    </tr>
+                    <tr data-order-id="5">
+                        <td>#PED-1012</td>
+                        <td>#CLI-505</td>
+                        <td>Carlos Ferreira</td>
+                        <td>Porto Alegre - RS</td>
+                        <td><span class="order-status completed">Não</span></td>
+                        <td>
+                            <span class="order-status separado" id="status-display-5">Separado</span>
+                        </td>
+                        <td>
+                            <button class="btn-edit-status" onclick="editOrderStatus(5)">Editar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <!-- Add Product Modal -->
+    <div class="modal" id="addProductModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Adicionar Novo Produto</h3>
+            </div>
+            <form onsubmit="addProduct(event)">
+                <div class="form-group">
+                    <label for="productName">Nome do Produto</label>
+                    <input type="text" id="productName" required>
+                </div>
+                <div class="form-group">
+                    <label for="productWeight">Gramagem</label>
+                    <select id="productWeight" required>
+                        <option value="">Selecione a gramagem</option>
+                        <option value="800 GR">800 GR</option>
+                        <option value="1 KG">1 KG</option>
+                        <option value="2 KG">2 KG</option>
+                        <option value="2.5 KG">2.5 KG</option>
+                        <option value="5 KG">5 KG</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="productStatus">Status</label>
+                    <select id="productStatus" required>
+                        <option value="">Selecione o status</option>
+                        <option value="Frito e congelado">Frito e congelado</option>
+                        <option value="Cru e congelando">Cru e congelando</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="productQuantity">Quantidade</label>
+                    <input type="number" id="productQuantity" min="1" required>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn-cancel" onclick="closeAddProductModal()">Cancelar</button>
+                    <button type="submit" class="btn-submit">Adicionar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add Order Modal -->
+    <div class="modal" id="addOrderModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Adicionar Novo Pedido</h3>
+            </div>
+            <form onsubmit="addOrder(event)">
+                <div class="form-group">
+                    <label for="orderCustomerId">Número do Cliente</label>
+                    <input type="text" id="orderCustomerId" placeholder="#CLI-XXX" required>
+                </div>
+                <div class="form-group">
+                    <label for="orderCustomerName">Nome do Cliente</label>
+                    <input type="text" id="orderCustomerName" required>
+                </div>
+                <div class="form-group">
+                    <label for="orderRegion">Região</label>
+                    <input type="text" id="orderRegion" placeholder="Cidade - Estado" required>
+                </div>
+                <div class="form-group">
+                    <label for="orderShortage">Falta</label>
+                    <select id="orderShortage" required>
+                        <option value="">Selecione</option>
+                        <option value="Sim">Sim</option>
+                        <option value="Não">Não</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="orderStatus">Status</label>
+                    <select id="orderStatus" required>
+                        <option value="">Selecione o status</option>
+                        <option value="Separar">Separar</option>
+                        <option value="Separado">Separado</option>
+                        <option value="Entregue">Entregue</option>
+                    </select>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn-cancel" onclick="closeAddOrderModal()">Cancelar</button>
+                    <button type="submit" class="btn-submit">Adicionar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        let productIdCounter = 4;
+        let orderIdCounter = 1025;
+
+        function openAddProductModal() {
+            document.getElementById('addProductModal').classList.add('active');
+        }
+
+        function closeAddProductModal() {
+            document.getElementById('addProductModal').classList.remove('active');
+            document.getElementById('productName').value = '';
+            document.getElementById('productWeight').value = '';
+            document.getElementById('productStatus').value = '';
+            document.getElementById('productQuantity').value = '';
+        }
+
+        function addProduct(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('productName').value;
+            const weight = document.getElementById('productWeight').value;
+            const status = document.getElementById('productStatus').value;
+            const quantity = document.getElementById('productQuantity').value;
+            
+            const tbody = document.querySelector('#productsTable tbody');
+            const newRow = document.createElement('tr');
+            newRow.setAttribute('data-product-id', productIdCounter);
+            
+            newRow.innerHTML = `
+                <td class="product-name-cell">${name}</td>
+                <td>${weight}</td>
+                <td>${status}</td>
+                <td>
+                    <div class="quantity-control">
+                        <button class="btn-quantity" onclick="decreaseQuantity(${productIdCounter})">-</button>
+                        <span class="quantity-value" id="quantity-${productIdCounter}">${quantity}</span>
+                        <button class="btn-quantity" onclick="increaseQuantity(${productIdCounter})">+</button>
+                    </div>
+                </td>
+                <td>
+                    <button class="btn-delete" onclick="deleteProduct(${productIdCounter})">Excluir</button>
+                </td>
+            `;
+            
+            tbody.appendChild(newRow);
+            productIdCounter++;
+            
+            closeAddProductModal();
+        }
+
+        function increaseQuantity(productId) {
+            const quantityElement = document.getElementById(`quantity-${productId}`);
+            let currentQuantity = parseInt(quantityElement.textContent);
+            quantityElement.textContent = currentQuantity + 1;
+        }
+
+        function decreaseQuantity(productId) {
+            const quantityElement = document.getElementById(`quantity-${productId}`);
+            let currentQuantity = parseInt(quantityElement.textContent);
+            if (currentQuantity > 0) {
+                quantityElement.textContent = currentQuantity - 1;
+            }
+        }
+
+        function deleteProduct(productId) {
+            if (confirm('Tem certeza que deseja excluir este produto?')) {
+                const row = document.querySelector(`tr[data-product-id="${productId}"]`);
+                row.remove();
+            }
+        }
+
+        function openAddOrderModal() {
+            document.getElementById('addOrderModal').classList.add('active');
+        }
+
+        function closeAddOrderModal() {
+            document.getElementById('addOrderModal').classList.remove('active');
+            document.getElementById('orderCustomerId').value = '';
+            document.getElementById('orderCustomerName').value = '';
+            document.getElementById('orderRegion').value = '';
+            document.getElementById('orderShortage').value = '';
+            document.getElementById('orderStatus').value = '';
+        }
+
+        function addOrder(event) {
+            event.preventDefault();
+            
+            const customerId = document.getElementById('orderCustomerId').value;
+            const customerName = document.getElementById('orderCustomerName').value;
+            const region = document.getElementById('orderRegion').value;
+            const shortage = document.getElementById('orderShortage').value;
+            const status = document.getElementById('orderStatus').value;
+            
+            const tbody = document.querySelector('#ordersTable tbody');
+            const newRow = document.createElement('tr');
+            
+            const shortageClass = shortage === 'Sim' ? 'pending' : 'completed';
+            const statusClass = status.toLowerCase().replace('á', 'a');
+            
+            newRow.setAttribute('data-order-id', orderIdCounter);
+            
+            newRow.innerHTML = `
+                <td>#PED-${orderIdCounter}</td>
+                <td>${customerId}</td>
+                <td>${customerName}</td>
+                <td>${region}</td>
+                <td><span class="order-status ${shortageClass}">${shortage}</span></td>
+                <td>
+                    <span class="order-status ${statusClass}" id="status-display-${orderIdCounter}">${status}</span>
+                </td>
+                <td>
+                    <button class="btn-edit-status" onclick="editOrderStatus(${orderIdCounter})">Editar</button>
+                </td>
+            `;
+            
+            tbody.insertBefore(newRow, tbody.firstChild);
+            orderIdCounter++;
+            
+            closeAddOrderModal();
+        }
+
+        function editOrderStatus(orderId) {
+            const statusDisplay = document.getElementById(`status-display-${orderId}`);
+            const currentStatus = statusDisplay.textContent;
+            
+            const select = document.createElement('select');
+            select.className = 'status-select';
+            select.innerHTML = `
+                <option value="Separar" ${currentStatus === 'Separar' ? 'selected' : ''}>Separar</option>
+                <option value="Separado" ${currentStatus === 'Separado' ? 'selected' : ''}>Separado</option>
+                <option value="Entregue" ${currentStatus === 'Entregue' ? 'selected' : ''}>Entregue</option>
+            `;
+            
+            const cell = statusDisplay.parentElement;
+            cell.innerHTML = '';
+            cell.appendChild(select);
+            
+            select.focus();
+            
+            select.addEventListener('change', function() {
+                const newStatus = this.value;
+                const statusClass = newStatus.toLowerCase().replace('á', 'a');
+                
+                cell.innerHTML = `<span class="order-status ${statusClass}" id="status-display-${orderId}">${newStatus}</span>`;
+            });
+            
+            select.addEventListener('blur', function() {
+                const newStatus = this.value;
+                const statusClass = newStatus.toLowerCase().replace('á', 'a');
+                
+                cell.innerHTML = `<span class="order-status ${statusClass}" id="status-display-${orderId}">${newStatus}</span>`;
+            });
+        }
+
+        document.getElementById('addProductModal').addEventListener('click', function(event) {
+            if (event.target === this) {
+                closeAddProductModal();
+            }
+        });
+
+        document.getElementById('addOrderModal').addEventListener('click', function(event) {
+            if (event.target === this) {
+                closeAddOrderModal();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -58,3 +58,6 @@ def password(request):
             return render(request, 'APPEstoque/password.html', {'error': 'Usuário não encontrado!'})
 
     return render(request, 'APPEstoque/password.html')
+
+def container(request):
+    return render(request, 'APPEstoque/container.html')

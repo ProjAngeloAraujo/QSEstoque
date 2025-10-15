@@ -1,0 +1,262 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Controle de Estoque</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'APPEstoque/CSS/dashboard.css' %}">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <h1>📦 Controle de Estoque</h1>
+            <div class="header-actions">
+                <div class="user-info">
+                    <div class="user-avatar">A</div>
+                    <span>Admin</span>
+                </div>
+                <a href="login.html" class="btn-logout">Sair</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="main-container">
+        <!-- Stats Cards -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div>
+                        <div class="stat-value">12</div>
+                        <div class="stat-label">Total de Containers</div>
+                    </div>
+                    <div class="stat-icon green">📦</div>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div>
+                        <div class="stat-value">248</div>
+                        <div class="stat-label">Total de Produtos</div>
+                    </div>
+                    <div class="stat-icon brown">📊</div>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div>
+                        <div class="stat-value">15</div>
+                        <div class="stat-label">Pedidos Pendentes</div>
+                    </div>
+                    <div class="stat-icon gold">🔔</div>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div>
+                        <div class="stat-value">8</div>
+                        <div class="stat-label">Containers Ativos</div>
+                    </div>
+                    <div class="stat-icon green">✓</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Containers Section -->
+        <div class="section-header">
+            <h2>Containers de Estoque</h2>
+            <button class="btn-add">+ Novo Container</button>
+        </div>
+
+        <div class="containers-grid">
+            <!-- Container 1 -->
+            <div class="container-card">
+                <div class="container-header">
+                    <div class="container-title">Container A1</div>
+                    <div class="container-id">#CNT-001</div>
+                </div>
+                <div class="container-body">
+                    <ul class="product-list">
+                        <li class="product-item">
+                            <div class="product-info">
+                                <div class="product-name">Frango Empanado</div>
+                                <div class="product-category">1 KG - Frito e congelado</div>
+                            </div>
+                            <div class="product-quantity">25 un</div>
+                        </li>
+                        <li class="product-item">
+                            <div class="product-info">
+                                <div class="product-name">Batata Frita</div>
+                                <div class="product-category">2.5 KG - Cru e congelando</div>
+                            </div>
+                            <div class="product-quantity">50 un</div>
+                        </li>
+                        <li class="product-item">
+                            <div class="product-info">
+                                <div class="product-name">Nuggets</div>
+                                <div class="product-category">800 GR - Frito e congelado</div>
+                            </div>
+                            <div class="product-quantity">30 un</div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="container-footer">
+                    <span class="container-status active">Ativo</span>
+                    <a href="container.html" class="btn-view" style="text-decoration: none; display: inline-block;">Ver Detalhes</a>
+                </div>
+            </div>
+
+            <!-- Container 2 -->
+            <div class="container-card">
+                <div class="container-header">
+                    <div class="container-title">Container B2</div>
+                    <div class="container-id">#CNT-002</div>
+                </div>
+                <div class="container-body">
+                    <ul class="product-list">
+                        <li class="product-item">
+                            <div class="product-info">
+                                <div class="product-name">Coxinha de Frango</div>
+                                <div class="product-category">2 KG - Frito e congelado</div>
+                            </div>
+                            <div class="product-quantity">15 un</div>
+                        </li>
+                        <li class="product-item">
+                            <div class="product-info">
+                                <div class="product-name">Hambúrguer</div>
+                                <div class="product-category">5 KG - Cru e congelando</div>
+                            </div>
+                            <div class="product-quantity">20 un</div>
+                        </li>
+                        <li class="product-item">
+                            <div class="product-info">
+                                <div class="product-name">Empanado de Peixe</div>
+                                <div class="product-category">1 KG - Frito e congelado</div>
+                            </div>
+                            <div class="product-quantity">40 un</div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="container-footer">
+                    <span class="container-status full">Cheio</span>
+                    <a href="container.html" class="btn-view" style="text-decoration: none; display: inline-block;">Ver Detalhes</a>
+                </div>
+            </div>
+
+            <!-- Container 3 -->
+            <div class="container-card">
+                <div class="container-header">
+                    <div class="container-title">Container C3</div>
+                    <div class="container-id">#CNT-003</div>
+                </div>
+                <div class="container-body">
+                    <ul class="product-list">
+                        <li class="product-item">
+                            <div class="product-info">
+                                <div class="product-name">Linguiça Calabresa</div>
+                                <div class="product-category">2.5 KG - Cru e congelando</div>
+                            </div>
+                            <div class="product-quantity">18 un</div>
+                        </li>
+                        <li class="product-item">
+                            <div class="product-info">
+                                <div class="product-name">Almôndega</div>
+                                <div class="product-category">800 GR - Frito e congelado</div>
+                            </div>
+                            <div class="product-quantity">35 un</div>
+                        </li>
+                        <li class="product-item">
+                            <div class="product-info">
+                                <div class="product-name">Kibe</div>
+                                <div class="product-category">1 KG - Frito e congelado</div>
+                            </div>
+                            <div class="product-quantity">28 un</div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="container-footer">
+                    <span class="container-status active">Ativo</span>
+                    <a href="container.html" class="btn-view" style="text-decoration: none; display: inline-block;">Ver Detalhes</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Orders Section -->
+        <div class="section-header">
+            <h2>Pedidos Recentes</h2>
+        </div>
+
+        <div class="orders-section">
+            <table class="orders-table">
+                <thead>
+                    <tr>
+                        <th>Número do Pedido</th>
+                        <th>Número do Cliente</th>
+                        <th>Nome do Cliente</th>
+                        <th>Container</th>
+                        <th>Região</th>
+                        <th>Falta</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>#PED-1024</td>
+                        <td>#CLI-501</td>
+                        <td>João Silva</td>
+                        <td>Container A1</td>
+                        <td>São Paulo - SP</td>
+                        <td><span class="order-status completed">Não</span></td>
+                        <td><span class="order-status entregue">Entregue</span></td>
+                    </tr>
+                    <tr>
+                        <td>#PED-1023</td>
+                        <td>#CLI-502</td>
+                        <td>Maria Santos</td>
+                        <td>Container B2</td>
+                        <td>Rio de Janeiro - RJ</td>
+                        <td><span class="order-status pending">Sim</span></td>
+                        <td><span class="order-status separar">Separar</span></td>
+                    </tr>
+                    <tr>
+                        <td>#PED-1022</td>
+                        <td>#CLI-503</td>
+                        <td>Pedro Costa</td>
+                        <td>Container C3</td>
+                        <td>Belo Horizonte - MG</td>
+                        <td><span class="order-status completed">Não</span></td>
+                        <td><span class="order-status separado">Separado</span></td>
+                    </tr>
+                    <tr>
+                        <td>#PED-1021</td>
+                        <td>#CLI-504</td>
+                        <td>Ana Oliveira</td>
+                        <td>Container A1</td>
+                        <td>Curitiba - PR</td>
+                        <td><span class="order-status completed">Não</span></td>
+                        <td><span class="order-status entregue">Entregue</span></td>
+                    </tr>
+                    <tr>
+                        <td>#PED-1020</td>
+                        <td>#CLI-505</td>
+                        <td>Carlos Ferreira</td>
+                        <td>Container B2</td>
+                        <td>Porto Alegre - RS</td>
+                        <td><span class="order-status pending">Sim</span></td>
+                        <td><span class="order-status separar">Separar</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+</body>
+</html>
