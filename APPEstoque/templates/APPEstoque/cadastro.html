@@ -1,0 +1,92 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'APPEstoque/CSS/cadastro.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="form-section">
+            <div class="form-wrapper">
+                <div class="form-header">
+                    <h1>Criar conta</h1>
+                    <p>Preencha os dados para se cadastrar</p>
+                </div>
+
+                <form method="post" action="">
+                    {% csrf_token %}
+                    
+                    <div class="form-group">
+                        <label for="fullname">Nome completo</label>
+                        <input type="text" id="fullname" name="fullname" placeholder="Seu nome completo" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Senha</label>
+                        <input type="password" id="password" name="password" placeholder="••••••••" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirm-password">Confirmar senha</label>
+                        <input type="password" id="confirm-password" name="confirm_password" placeholder="••••••••" required>
+                    </div>
+
+                    <button type="submit" class="btn-primary">Cadastrar</button>
+
+                    <div class="login-link">
+                        Já tem conta? <a href="{% url 'index' %}">Entrar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+        <div class="illustration-section">
+            <svg class="illustration" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+                 User profile creation concept 
+                <circle cx="250" cy="200" r="70" fill="#0f3d0f" opacity="0.1"/>
+                <circle cx="250" cy="200" r="55" fill="#0f3d0f" opacity="0.15"/>
+                
+                 User icon 
+                <circle cx="250" cy="180" r="35" fill="#d4af37"/>
+                <path d="M250 215 C220 215, 200 235, 200 265 L300 265 C300 235, 280 215, 250 215 Z" fill="#d4af37"/>
+                
+                 Checkmarks and success indicators 
+                <circle cx="150" cy="300" r="25" fill="#0f3d0f" opacity="0.2"/>
+                <path d="M140 300 L148 308 L162 292" stroke="#0f3d0f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                
+                <circle cx="250" cy="350" r="25" fill="#5c4033" opacity="0.2"/>
+                <path d="M240 350 L248 358 L262 342" stroke="#5c4033" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                
+                <circle cx="350" cy="300" r="25" fill="#d4af37" opacity="0.2"/>
+                <path d="M340 300 L348 308 L362 292" stroke="#d4af37" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                
+                 Connection lines 
+                <line x1="250" y1="235" x2="175" y2="275" stroke="#0f3d0f" stroke-width="2" opacity="0.3" stroke-dasharray="5,5"/>
+                <line x1="250" y1="235" x2="250" y2="325" stroke="#5c4033" stroke-width="2" opacity="0.3" stroke-dasharray="5,5"/>
+                <line x1="250" y1="235" x2="325" y2="275" stroke="#d4af37" stroke-width="2" opacity="0.3" stroke-dasharray="5,5"/>
+                
+                 Decorative dots 
+                <circle cx="100" cy="150" r="4" fill="#d4af37" opacity="0.6"/>
+                <circle cx="400" cy="150" r="4" fill="#d4af37" opacity="0.6"/>
+                <circle cx="100" cy="400" r="4" fill="#0f3d0f" opacity="0.6"/>
+                <circle cx="400" cy="400" r="4" fill="#0f3d0f" opacity="0.6"/>
+                <circle cx="250" cy="80" r="3" fill="#5c4033" opacity="0.6"/>
+                <circle cx="250" cy="450" r="3" fill="#5c4033" opacity="0.6"/>
+            </svg>
+        </div>
+    </div>
+</body>
+</html>

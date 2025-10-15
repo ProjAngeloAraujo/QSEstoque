@@ -1,0 +1,93 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'APPEstoque/CSS/index.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="form-section">
+            <div class="form-wrapper">
+                <div class="form-header">
+                    <h1>Bem-vindo de volta</h1>
+                    <p>Entre com suas credenciais</p>
+                </div>
+
+                <form method="post" action="">
+                    {% csrf_token %}
+                    
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Senha</label>
+                        <input type="password" id="password" name="password" placeholder="••••••••" required>
+                    </div>
+
+                    <div class="form-options">
+                        <label class="remember-me">
+                            <input type="checkbox" name="remember" id="remember">
+                            <span>Lembrar-me</span>
+                        </label>
+                        <a href="#" class="forgot-password">Esqueci minha senha?</a>
+                    </div>
+
+                    <button type="submit" class="btn-primary">Entrar</button>
+
+                    <div class="signup-link">
+                        Não tem conta? <a href="{% url 'cadastro' %}">Cadastre-se</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="illustration-section">
+            <svg class="illustration" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+                 Network nodes and connections 
+                <circle cx="250" cy="250" r="80" fill="#0f3d0f" opacity="0.1"/>
+                <circle cx="250" cy="250" r="60" fill="#0f3d0f" opacity="0.15"/>
+                <circle cx="250" cy="250" r="40" fill="#0f3d0f" opacity="0.2"/>
+                
+                 Central node 
+                <circle cx="250" cy="250" r="25" fill="#d4af37"/>
+                <circle cx="250" cy="250" r="18" fill="#ffffff"/>
+                
+                 Surrounding nodes 
+                <circle cx="150" cy="150" r="15" fill="#0f3d0f"/>
+                <circle cx="350" cy="150" r="15" fill="#5c4033"/>
+                <circle cx="150" cy="350" r="15" fill="#5c4033"/>
+                <circle cx="350" cy="350" r="15" fill="#0f3d0f"/>
+                <circle cx="250" cy="100" r="12" fill="#d4af37"/>
+                <circle cx="250" cy="400" r="12" fill="#d4af37"/>
+                <circle cx="100" cy="250" r="12" fill="#d4af37"/>
+                <circle cx="400" cy="250" r="12" fill="#d4af37"/>
+                
+                 Connection lines 
+                <line x1="250" y1="250" x2="150" y2="150" stroke="#0f3d0f" stroke-width="2" opacity="0.3"/>
+                <line x1="250" y1="250" x2="350" y2="150" stroke="#0f3d0f" stroke-width="2" opacity="0.3"/>
+                <line x1="250" y1="250" x2="150" y2="350" stroke="#0f3d0f" stroke-width="2" opacity="0.3"/>
+                <line x1="250" y1="250" x2="350" y2="350" stroke="#0f3d0f" stroke-width="2" opacity="0.3"/>
+                <line x1="250" y1="250" x2="250" y2="100" stroke="#d4af37" stroke-width="2" opacity="0.4"/>
+                <line x1="250" y1="250" x2="250" y2="400" stroke="#d4af37" stroke-width="2" opacity="0.4"/>
+                <line x1="250" y1="250" x2="100" y2="250" stroke="#d4af37" stroke-width="2" opacity="0.4"/>
+                <line x1="250" y1="250" x2="400" y2="250" stroke="#d4af37" stroke-width="2" opacity="0.4"/>
+                
+                 Decorative elements 
+                <circle cx="80" cy="80" r="3" fill="#d4af37" opacity="0.6"/>
+                <circle cx="420" cy="80" r="3" fill="#d4af37" opacity="0.6"/>
+                <circle cx="80" cy="420" r="3" fill="#d4af37" opacity="0.6"/>
+                <circle cx="420" cy="420" r="3" fill="#d4af37" opacity="0.6"/>
+            </svg>
+        </div>
+    </div>
+</body>
+</html>
