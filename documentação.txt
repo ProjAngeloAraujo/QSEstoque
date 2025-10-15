@@ -5,6 +5,9 @@ Ativar a venv:
     venv\Scripts\activate (bash);
 Baixar as bibliotecas:
     pip install django psycopg[binary];
+    python.exe -m pip install --upgrade pip;
 Criar o projeto:
     django-admin startproject QSEstoque . ;
     python manage.py startapp APPEstoque (criar o APP);
+    Criar a pasta de templates, static e urls.py do APP;
+    Ambiente Virtual;
