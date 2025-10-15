@@ -1,0 +1,42 @@
+# Ambiente virtual
+venv/
+.env/
+.venv/
+ENV/
+env/
+
+# Arquivos Python compilados
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Logs e cache
+*.log
+*.pot
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+db.sqlite3
+
+# Configurações locais
+*.env
+*.local
+.DS_Store
+
+# Diretórios de IDEs
+.vscode/
+.idea/
+
+# Arquivos de build e cobertura
+htmlcov/
+coverage.xml
+*.cover
+*.py,cover
+.cache
+nosetests.xml
+*.log
+
+# Arquivos de mídia gerados
+/media/
