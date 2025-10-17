@@ -21,6 +21,6 @@ BD:
     \l (teste);
     configurar o sttings.py
     heidisql para visualizar;
-     python manage.py makemigrations;
-     python manage.py migrate;
+    python manage.py makemigrations;
+    python manage.py migrate;
     python manage.py runserver;
