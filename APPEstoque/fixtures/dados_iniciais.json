@@ -1,0 +1,45 @@
+[
+    {
+      "model": "APPEstoque.container",
+      "pk": 1,
+      "fields": {
+        "nome_container": "Container Galpão",
+        "status": "ativo",
+        "ultimas_alteracoes": "2025-10-14T00:00:00Z"
+      }
+    },
+    {
+      "model": "APPEstoque.container",
+      "pk": 2,
+      "fields": {
+        "nome_container": "Container Fabrica",
+        "status": "ativo",
+        "ultimas_alteracoes": "2025-10-14T00:00:00Z"
+      }
+    },
+    {
+      "model": "APPEstoque.produto",
+      "pk": 1,
+      "fields": {
+        "nome_produto": "Coxinha",
+        "gramagem_produto": "1 KG",
+        "status_produto": "Cru e congelado",
+        "quantidade_produto": 20,
+        "container": 1
+      }
+    },
+    {
+      "model": "APPEstoque.pedido",
+      "pk": 1,
+      "fields": {
+        "numero_cliente_pedido": 250,
+        "nome_cliente_pedido": "POP",
+        "regiao_pedido": "Zona Norte",
+        "falta": "Não",
+        "status_pedido": "Separado",
+        "data_criacao": "2025-10-14T12:00:00Z",
+        "ultimas_alteracoes": "2025-10-14T12:00:00Z"
+      }
+    }
+]
+  
