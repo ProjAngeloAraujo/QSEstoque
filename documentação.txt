@@ -24,3 +24,5 @@ BD:
     python manage.py makemigrations;
     python manage.py migrate;
     python manage.py runserver;
+    criei o fixtures e configurei um arvivo json;
+    python manage.py loaddata APPEstoque/fixtures/dados_iniciais.json;

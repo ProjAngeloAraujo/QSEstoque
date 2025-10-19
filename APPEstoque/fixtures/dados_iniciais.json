@@ -1,0 +1,228 @@
+[
+  {
+    "model": "APPEstoque.usuario",
+    "pk": 1,
+    "fields": {
+      "fullname": "Admin Teste",
+      "email": "admin@teste.com",
+      "password": "admin123",
+      "is_active": true,
+      "is_staff": true
+    }
+  },
+
+  {
+    "model": "APPEstoque.container",
+    "pk": 1,
+    "fields": {
+      "nome_container": "Container Galpão",
+      "status": "ativo",
+      "ultimas_alteracoes": "2025-10-14T00:00:00Z"
+    }
+  },
+  {
+    "model": "APPEstoque.container",
+    "pk": 2,
+    "fields": {
+      "nome_container": "Container Fábrica",
+      "status": "ativo",
+      "ultimas_alteracoes": "2025-10-14T00:00:00Z"
+    }
+  },
+
+  {
+    "model": "APPEstoque.produto",
+    "pk": 1,
+    "fields": {
+      "container": 1,
+      "nome_produto": "Coxinha",
+      "gramagem_produto": "1kg",
+      "status_produto": "cru_congelado",
+      "quantidade_produto": 20
+    }
+  },
+  {
+    "model": "APPEstoque.produto",
+    "pk": 2,
+    "fields": {
+      "container": 1,
+      "nome_produto": "Bolinho de Queijo",
+      "gramagem_produto": "1kg",
+      "status_produto": "frito_congelado",
+      "quantidade_produto": 15
+    }
+  },
+  {
+    "model": "APPEstoque.produto",
+    "pk": 3,
+    "fields": {
+      "container": 1,
+      "nome_produto": "Bolinho de Calabresa",
+      "gramagem_produto": "2kg",
+      "status_produto": "cru_congelado",
+      "quantidade_produto": 18
+    }
+  },
+  {
+    "model": "APPEstoque.produto",
+    "pk": 4,
+    "fields": {
+      "container": 1,
+      "nome_produto": "Risoles",
+      "gramagem_produto": "2.5kg",
+      "status_produto": "frito_congelado",
+      "quantidade_produto": 12
+    }
+  },
+  {
+    "model": "APPEstoque.produto",
+    "pk": 5,
+    "fields": {
+      "container": 1,
+      "nome_produto": "Bolinho de Carne",
+      "gramagem_produto": "5kg",
+      "status_produto": "cru_congelado",
+      "quantidade_produto": 10
+    }
+  },
+  {
+    "model": "APPEstoque.produto",
+    "pk": 6,
+    "fields": {
+      "container": 1,
+      "nome_produto": "Churros",
+      "gramagem_produto": "800gr",
+      "status_produto": "frito_congelado",
+      "quantidade_produto": 25
+    }
+  },
+  {
+    "model": "APPEstoque.produto",
+    "pk": 7,
+    "fields": {
+      "container": 1,
+      "nome_produto": "Enroladinho de Salsicha",
+      "gramagem_produto": "2kg",
+      "status_produto": "cru_congelado",
+      "quantidade_produto": 30
+    }
+  },
+
+  {
+    "model": "APPEstoque.produto",
+    "pk": 8,
+    "fields": {
+      "container": 2,
+      "nome_produto": "Coxinha",
+      "gramagem_produto": "1kg",
+      "status_produto": "cru_congelado",
+      "quantidade_produto": 22
+    }
+  },
+  {
+    "model": "APPEstoque.produto",
+    "pk": 9,
+    "fields": {
+      "container": 2,
+      "nome_produto": "Bolinho de Queijo",
+      "gramagem_produto": "2kg",
+      "status_produto": "frito_congelado",
+      "quantidade_produto": 18
+    }
+  },
+  {
+    "model": "APPEstoque.produto",
+    "pk": 10,
+    "fields": {
+      "container": 2,
+      "nome_produto": "Bolinho de Calabresa",
+      "gramagem_produto": "5kg",
+      "status_produto": "cru_congelado",
+      "quantidade_produto": 16
+    }
+  },
+  {
+    "model": "APPEstoque.produto",
+    "pk": 11,
+    "fields": {
+      "container": 2,
+      "nome_produto": "Risoles",
+      "gramagem_produto": "800gr",
+      "status_produto": "frito_congelado",
+      "quantidade_produto": 20
+    }
+  },
+  {
+    "model": "APPEstoque.produto",
+    "pk": 12,
+    "fields": {
+      "container": 2,
+      "nome_produto": "Bolinho de Carne",
+      "gramagem_produto": "2.5kg",
+      "status_produto": "cru_congelado",
+      "quantidade_produto": 14
+    }
+  },
+  {
+    "model": "APPEstoque.produto",
+    "pk": 13,
+    "fields": {
+      "container": 2,
+      "nome_produto": "Churros",
+      "gramagem_produto": "1kg",
+      "status_produto": "frito_congelado",
+      "quantidade_produto": 28
+    }
+  },
+  {
+    "model": "APPEstoque.produto",
+    "pk": 14,
+    "fields": {
+      "container": 2,
+      "nome_produto": "Enroladinho de Salsicha",
+      "gramagem_produto": "2kg",
+      "status_produto": "cru_congelado",
+      "quantidade_produto": 26
+    }
+  },
+
+  {
+    "model": "APPEstoque.pedido",
+    "pk": 1,
+    "fields": {
+      "numero_cliente_pedido": "250",
+      "nome_cliente_pedido": "Pop Lanches",
+      "regiao_pedido": "Zona Norte",
+      "falta": "nao",
+      "status_pedido": "separar",
+      "data_criacao": "2025-10-14T12:00:00Z",
+      "ultimas_alteracoes": "2025-10-14T12:00:00Z"
+    }
+  },
+  {
+    "model": "APPEstoque.pedido",
+    "pk": 2,
+    "fields": {
+      "numero_cliente_pedido": "251",
+      "nome_cliente_pedido": "Bar do Zé",
+      "regiao_pedido": "Centro",
+      "falta": "sim",
+      "status_pedido": "separado",
+      "data_criacao": "2025-10-14T13:00:00Z",
+      "ultimas_alteracoes": "2025-10-14T13:00:00Z"
+    }
+  },
+  {
+    "model": "APPEstoque.pedido",
+    "pk": 3,
+    "fields": {
+      "numero_cliente_pedido": "252",
+      "nome_cliente_pedido": "Cantina da Escola",
+      "regiao_pedido": "Zona Sul",
+      "falta": "nao",
+      "status_pedido": "entregue",
+      "data_criacao": "2025-10-14T14:00:00Z",
+      "ultimas_alteracoes": "2025-10-14T14:00:00Z"
+    }
+  }
+]
