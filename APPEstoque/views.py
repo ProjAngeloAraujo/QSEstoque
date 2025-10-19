@@ -29,7 +29,7 @@ def index(request):
                 # Login bem-sucedido
                 request.session['usuario_id'] = usuario.id
                 request.session['usuario_nome'] = usuario.fullname
-                return redirect('dashboard')  # ou outra página
+                return render(request, 'APPEstoque/dashboard.html')  # ou outra página
             else:
                 return render(request, 'APPEstoque/index.html', {'error': 'Senha incorreta'})
         except Usuario.DoesNotExist:
