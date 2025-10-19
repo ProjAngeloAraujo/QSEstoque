@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Usuario
 from django.contrib.auth.hashers import check_password
+from django.contrib.auth.decorators import login_required
 
 def cadastro(request):
     if request.method == "POST":
@@ -36,6 +37,7 @@ def index(request):
 
     return render(request, 'APPEstoque/index.html')
 
+@login_required
 def dashboard(request):
     return render(request, 'APPEstoque/dashboard.html')
 

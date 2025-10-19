@@ -32,3 +32,4 @@ CI/CD:
     criei um arquivo 'requirements.txt' para setup do ambiente;
     para usar o github actions criei uma pasta '.github/workflows/'; 
     e criei um arquivo 'django.yml' para configurar o ambiente para realizar os testes;
+    python manage.py test APPEstoque;
