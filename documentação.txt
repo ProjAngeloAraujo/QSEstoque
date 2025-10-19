@@ -26,3 +26,9 @@ BD:
     python manage.py runserver;
     criei o fixtures e configurei um arvivo json;
     python manage.py loaddata APPEstoque/fixtures/dados_iniciais.json;
+
+CI/CD:
+    criei a pasta 'tests' e dentro criei um arquivo 'test_models.py'(teste);
+    criei um arquivo 'requirements.txt' para setup do ambiente;
+    para usar o github actions criei uma pasta '.github/workflows/'; 
+    e criei um arquivo 'django.yml' para configurar o ambiente para realizar os testes;
