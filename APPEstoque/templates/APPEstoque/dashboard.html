@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="{% static 'APPEstoque/CSS/dashboard.css' %}">
 </head>
 <body>
+    {% if error %}
+        <p style="color: red; text-align: center;">{{ error }}</p>
+    {% endif %}
     <!-- Header -->
     <header class="header">
         <div class="header-content">

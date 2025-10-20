@@ -22,6 +22,10 @@
 
                 <form method="post" action="">
                     {% csrf_token %}
+                    {% if error %}
+                        <p style="color: red; text-align: center;">{{ error }}</p>
+                    {% endif %}
+
                     
                     <div class="form-group">
                         <label for="fullname">Nome completo</label>

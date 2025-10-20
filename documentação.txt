@@ -33,3 +33,4 @@ CI/CD:
     para usar o github actions criei uma pasta '.github/workflows/'; 
     e criei um arquivo 'django.yml' para configurar o ambiente para realizar os testes;
     python manage.py test APPEstoque;
+    sistema de incrementação -> Criar - Testas - criar teste - testar
