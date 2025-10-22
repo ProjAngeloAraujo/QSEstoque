@@ -153,5 +153,27 @@
             </table>
         </div>
     </main>
+
+    <script>
+        console.log({{ usuario_nome|first|upper }});
+        console.log({{ usuario_nome }});
+        console.log({{ total_containers }});
+        console.log({{ total_produtos }});
+        console.log({{ pedidos_pendentes }});
+        console.log({{ containers_ativos }});
+        console.log({{ container.nome }});
+        console.log({{ container.identificador }});
+        console.log({{ produto.nome }});
+        console.log({{ produto.categoria }});
+        console.log({{ produto.quantidade }});
+        console.log({{ container.status }});
+        console.log({{ container.status|capfirst }});
+        console.log({{ pedido.numero_pedido }});
+        console.log({{ pedido.cliente_id }});
+        console.log({{ pedido.cliente_nome }});
+        console.log({{ pedido.container.nome }});
+        console.log({{ pedido.regiao }});
+        console.log({{ pedido.status }});
+    </script>
 </body>
 </html>
