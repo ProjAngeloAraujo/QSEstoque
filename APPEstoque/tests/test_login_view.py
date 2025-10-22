@@ -15,8 +15,8 @@ class ViewLoginTestCase(TestCase):
             'email': 'login@teste.com',
             'password': '12345'
         })
-        self.assertEqual(resposta.status_code, 200)
-        self.assertTemplateUsed(resposta, 'APPEstoque/dashboard.html')
+        self.assertEqual(resposta.status_code, 302)
+        self.assertRedirects(resposta, reverse('dashboard'))
 
     def test_login_email_incorreto(self):
         resposta = self.client.post(self.url, {
