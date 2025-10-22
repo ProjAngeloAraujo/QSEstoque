@@ -24,7 +24,7 @@
                     <div class="user-avatar">{{ usuario_nome|first|upper }}</div>
                     <span>{{ usuario_nome }}</span>
                 </div>
-                <a href="{% url 'logout' %}" class="btn-logout">Sair</a>
+                <a href="{% url 'logout_user' %}" class="btn-logout">Sair</a>
             </div>
         </div>
     </header>
@@ -66,9 +66,7 @@
             <div class="stat-card">
                 <div class="stat-header">
                     <div>
-                        <div class="stat-value">
-                            {{ containers_ativos }}
-                        </div>
+                        <div class="stat-value">{{ containers_ativos }}</div>
                         <div class="stat-label">Containers Ativos</div>
                     </div>
                     <div class="stat-icon green">✓</div>
@@ -86,29 +84,40 @@
             {% for container in containers %}
             <div class="container-card">
                 <div class="container-header">
-                    <div class="container-title">{{ container.nome }}</div>
-                    <div class="container-id">#{{ container.identificador }}</div>
+                    <div class="container-title">{{ container.nome_container }}</div>
+                    <div class="container-id">#CNT-{{ container.id_container }}</div>
                 </div>
                 <div class="container-body">
                     <ul class="product-list">
                         {% for produto in container.produtos.all %}
                         <li class="product-item">
                             <div class="product-info">
-                                <div class="product-name">{{ produto.nome }}</div>
-                                <div class="product-category">{{ produto.categoria }}</div>
+                                <div class="product-name">{{ produto.nome_produto }}</div>
+                                <div class="product-category">
+                                    {{ produto.gramagem_produto|upper }} - 
+                                    {% if produto.status_produto == 'frito_congelado' %}
+                                        Frito e Congelado
+                                    {% else %}
+                                        Cru e Congelado
+                                    {% endif %}
+                                </div>
                             </div>
-                            <div class="product-quantity">{{ produto.quantidade }} un</div>
+                            <div class="product-quantity">{{ produto.quantidade_produto }} un</div>
                         </li>
                         {% empty %}
-                        <li class="product-item"><em>Sem produtos neste container</em></li>
+                        <li class="product-item">
+                            <em>Nenhum produto neste container</em>
+                        </li>
                         {% endfor %}
                     </ul>
                 </div>
                 <div class="container-footer">
                     <span class="container-status {{ container.status }}">{{ container.status|capfirst }}</span>
-                    <a href="#" class="btn-view">Ver Detalhes</a>
+                    <a href="#" class="btn-view" style="text-decoration: none; display: inline-block;">Ver Detalhes</a>
                 </div>
             </div>
+            {% empty %}
+            <p style="text-align:center;">Nenhum container cadastrado</p>
             {% endfor %}
         </div>
 
@@ -122,7 +131,6 @@
                 <thead>
                     <tr>
                         <th>Número do Pedido</th>
-                        <th>Número do Cliente</th>
                         <th>Nome do Cliente</th>
                         <th>Região</th>
                         <th>Falta</th>
@@ -132,48 +140,32 @@
                 <tbody>
                     {% for pedido in pedidos %}
                     <tr>
-                        <td>#{{ pedido.numero_pedido }}</td>
-                        <td>#{{ pedido.cliente_id }}</td>
-                        <td>{{ pedido.cliente_nome }}</td>
-                        <td>{{ pedido.container.nome }}</td>
-                        <td>{{ pedido.regiao }}</td>
+                        <td>#{{ pedido.numero_cliente_pedido }}</td>
+                        <td>{{ pedido.nome_cliente_pedido }}</td>
+                        <td>{{ pedido.regiao_pedido }}</td>
                         <td>
-                            {% if pedido.falta %}
+                            {% if pedido.falta == 'sim' %}
                                 <span class="order-status pending">Sim</span>
                             {% else %}
                                 <span class="order-status completed">Não</span>
                             {% endif %}
                         </td>
-                        <td><span class="order-status">{{ pedido.status }}</span></td>
+                        <td>
+                            {% if pedido.status_pedido == 'entregue' %}
+                                <span class="order-status entregue">Entregue</span>
+                            {% elif pedido.status_pedido == 'separado' %}
+                                <span class="order-status separado">Separado</span>
+                            {% else %}
+                                <span class="order-status separar">Separar</span>
+                            {% endif %}
+                        </td>
                     </tr>
                     {% empty %}
-                    <tr><td colspan="7" style="text-align:center;">Nenhum pedido encontrado</td></tr>
+                    <tr><td colspan="5" style="text-align:center;">Nenhum pedido encontrado</td></tr>
                     {% endfor %}
                 </tbody>
             </table>
         </div>
     </main>
-
-    <script>
-        console.log({{ usuario_nome|first|upper }});
-        console.log({{ usuario_nome }});
-        console.log({{ total_containers }});
-        console.log({{ total_produtos }});
-        console.log({{ pedidos_pendentes }});
-        console.log({{ containers_ativos }});
-        console.log({{ container.nome }});
-        console.log({{ container.identificador }});
-        console.log({{ produto.nome }});
-        console.log({{ produto.categoria }});
-        console.log({{ produto.quantidade }});
-        console.log({{ container.status }});
-        console.log({{ container.status|capfirst }});
-        console.log({{ pedido.numero_pedido }});
-        console.log({{ pedido.cliente_id }});
-        console.log({{ pedido.cliente_nome }});
-        console.log({{ pedido.container.nome }});
-        console.log({{ pedido.regiao }});
-        console.log({{ pedido.status }});
-    </script>
 </body>
 </html>
