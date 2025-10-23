@@ -3,7 +3,10 @@ from .models import Usuario, Container, Produto, Pedido
 from django.contrib.auth.hashers import check_password
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
+from django.contrib.auth import get_user_model
+from django.contrib.auth import authenticate, login
 
+Usuario = get_user_model()
 
 def cadastro(request):
     if request.method == "POST":
@@ -13,20 +16,16 @@ def cadastro(request):
         confirm_password = request.POST.get('confirm_password')
 
         if password != confirm_password:
-            return render(request, 'APPEstoque/cadastro.html', {
-                'error': 'Senhas não conferem!'
-            })
+            return render(request, 'APPEstoque/cadastro.html', {'error': 'Senhas não conferem!'})
 
-        # Evita cadastro duplicado
         if Usuario.objects.filter(email=email).exists():
-            return render(request, 'APPEstoque/cadastro.html', {
-                'error': 'E-mail já cadastrado!'
-            })
+            return render(request, 'APPEstoque/cadastro.html', {'error': 'E-mail já cadastrado!'})
 
-        Usuario.objects.create(fullname=fullname, email=email, password=password)
+        Usuario.objects.create_user(fullname=fullname, email=email, password=password)
         return redirect('index')
 
     return render(request, 'APPEstoque/cadastro.html')
+
 
 
 def index(request):
@@ -34,24 +33,19 @@ def index(request):
         email = request.POST.get('email')
         password = request.POST.get('password')
 
-        try:
-            usuario = Usuario.objects.get(email=email)
-            if check_password(password, usuario.password):
-                request.session['usuario_id'] = usuario.id
-                request.session['usuario_nome'] = usuario.fullname
-                return redirect('dashboard')
+        user = authenticate(request, email=email, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('dashboard')
+        else:
+            if not Usuario.objects.filter(email=email).exists():
+                return render(request, 'APPEstoque/index.html', {'error': 'E-mail não cadastrado'})
             else:
-                return render(request, 'APPEstoque/index.html', {
-                    'error': 'Senha incorreta'
-                })
-        except Usuario.DoesNotExist:
-            return render(request, 'APPEstoque/index.html', {
-                'error': 'E-mail não cadastrado'
-            })
+                return render(request, 'APPEstoque/index.html', {'error': 'Senha incorreta'})
 
     return render(request, 'APPEstoque/index.html')
 
-
+@login_required
 def dashboard(request):
     containers = Container.objects.all().prefetch_related('produtos')
     pedidos = Pedido.objects.order_by('-data_criacao')[:10]
